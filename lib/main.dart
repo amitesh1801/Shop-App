@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 
+import './home_screen.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return MaterialApp(
-      title: 'MyShop',
+      debugShowCheckedModeBanner: false,
+      title: 'The Flutter Way',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Color.fromARGB(255, 234,244,244),
+        primarySwatch: Colors.cyan,
+        fontFamily: 'Gordita',
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        textTheme: const TextTheme(
+          bodyText2: TextStyle(color: Colors.black54),
+        ),
       ),
-      home: MyHomePage(),
+      home: const HomeScreen(),
     );
   }
-}
+  }
 
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('MyShop'),
-      ),
-      body: Center(
-        child: Text('Let\'s build a shop!'),
-      ),
-    );
-  }
-}
+
