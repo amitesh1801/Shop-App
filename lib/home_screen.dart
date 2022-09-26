@@ -14,6 +14,10 @@ class HomeScreen extends StatelessWidget {
           onPressed: () => {},
           icon: SvgPicture.asset("assets/icons/menu.svg"),
         ),
+        actions: [
+          IconButton(
+            onPressed: () => {}, 
+            icon : SvgPicture.asset("assets/icons/Cart.svg"))],
       ),
     );
   }
