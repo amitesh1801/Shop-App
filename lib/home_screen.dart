@@ -69,24 +69,29 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(fontSize: 18),
             ),
             Flexible(
-              child: 
-              GridView.builder(
+              child: GridView.builder(
                 padding: const EdgeInsets.all(10.0),
                 itemCount: loadedProducts.length,
-                itemBuilder: (ctx, i) => Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: secondaryColorlight,
-                      borderRadius: BorderRadius.circular(defaultBorderRadius)),
-                  child: 
-                    Image.asset(
-                      loadedProducts[i].imageUrl,
-                      height: 132,
+                itemBuilder: (ctx, i) => Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: secondaryColorlight,
+                          borderRadius:
+                              BorderRadius.circular(defaultBorderRadius)),
+                      child: Image.asset(
+                        loadedProducts[i].imageUrl,
+                        height: 132,
+                      ),
                     ),
+                    // padding if needed
+                    Text("your text"),
+                  ],
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 3 / 2,
+                  mainAxisExtent: 152,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),
