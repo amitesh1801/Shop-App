@@ -69,33 +69,68 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(fontSize: 18),
             ),
             Flexible(
-              child: GridView.builder(
+              child: 
+              GridView.builder(
                 padding: const EdgeInsets.all(10.0),
                 itemCount: loadedProducts.length,
-                itemBuilder: (ctx, i) => Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: secondaryColorlight,
-                          borderRadius:
-                              BorderRadius.circular(defaultBorderRadius)),
-                      child: Image.asset(
-                        loadedProducts[i].imageUrl,
-                        height: 132,
-                      ),
+                itemBuilder: (ctx, i) => Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: secondaryColorlight,
+                    borderRadius: BorderRadius.circular(defaultBorderRadius)),
+                  child: 
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Flexible(
+                            flex: 1,
+                            fit: FlexFit.tight,
+                            child: Container(
+                              height: 190.0,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child:Image.asset(loadedProducts[i].imageUrl),    
+                                          ),
+                                      ),
+                          ),
+                          SizedBox(height: 5.0),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, bottom: 5.0, right: 10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Flexible(
+                                    child: Text('Price',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      ),
+                                  ),
+                                  Text('Sometext',
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis, 
+                                  ),
+                                ],
+                                ),
+                                Text('title',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                     ),
-                    // padding if needed
-                    Text("your text"),
-                  ],
                 ),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisExtent: 152,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                ),
-              ),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 3 / 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
+          ),
             )
           ])),
     );
