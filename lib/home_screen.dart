@@ -1,35 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop_app/Products.dart';
 
+import 'package:shop_app/Products.dart';
+import './item_tile.dart';
 import 'package:shop_app/constants.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<Products> loadedProducts = [
     Products(
       id: 'p1',
-      title: 'Red Shirt',
+      title: 'White Shirt Pattern',
       description: 'A red shirt - it is pretty red!',
       price: 29.99,
       imageUrl: 'assets/images/product_0.png',
     ),
     Products(
       id: 'p2',
-      title: 'Trousers',
+      title: 'Blue T-shirt',
       description: 'A nice pair of trousers.',
       price: 59.99,
       imageUrl: 'assets/images/product_1.png',
     ),
     Products(
       id: 'p3',
-      title: 'Yellow Scarf',
+      title: 'Full Sleeved Shirt',
       description: 'Warm and cozy - exactly what you need for the winter.',
       price: 19.99,
       imageUrl: 'assets/images/product_2.png',
     ),
     Products(
       id: 'p4',
-      title: 'A Pan',
+      title: 'Green T-Shirt',
       description: 'Prepare any meal you want.',
       price: 49.99,
       imageUrl: 'assets/images/product_3.png',
@@ -69,68 +70,17 @@ class HomeScreen extends StatelessWidget {
               style: TextStyle(fontSize: 18),
             ),
             Flexible(
-              child: 
-              GridView.builder(
+              child: GridView.builder(
                 padding: const EdgeInsets.all(10.0),
                 itemCount: loadedProducts.length,
-                itemBuilder: (ctx, i) => Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: secondaryColorlight,
-                    borderRadius: BorderRadius.circular(defaultBorderRadius)),
-                  child: 
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Flexible(
-                            flex: 1,
-                            fit: FlexFit.tight,
-                            child: Container(
-                              height: 190.0,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10.0),
-                                child:Image.asset(loadedProducts[i].imageUrl),    
-                                          ),
-                                      ),
-                          ),
-                          SizedBox(height: 5.0),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0, bottom: 5.0, right: 10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Flexible(
-                                    child: Text('Price',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      ),
-                                  ),
-                                  Text('Sometext',
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis, 
-                                  ),
-                                ],
-                                ),
-                                Text('title',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                    ),
+                itemBuilder: (ctx, i) => itemTile(price: loadedProducts[i].price, image: loadedProducts[i].imageUrl, title: loadedProducts[i].title),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisExtent: 180,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
                 ),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 3 / 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-          ),
+              ),
             )
           ])),
     );

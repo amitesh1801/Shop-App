@@ -76,14 +76,22 @@ GridView.builder(
                       decoration: BoxDecoration(
                           color: secondaryColorlight,
                           borderRadius:
-                              BorderRadius.circular(defaultBorderRadius)),
-                      child: Image.asset(
-                        loadedProducts[i].imageUrl,
-                        height: 132,
-                      ),
+                            BorderRadius.circular(defaultBorderRadius)),
+                          child: Image.asset(
+                            loadedProducts[i].imageUrl,
+                            height: 132,
+                          ),
                     ),
-                    // padding if needed
-                    Text("your text"),
+                    const SizedBox(height: defaultPadding/2,),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(loadedProducts[i].title,
+                          style: TextStyle(color: Colors.black),)
+                          ),
+                        Text('\$'+ loadedProducts[i].price.toString()),
+                      ],
+                    ),
                   ],
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -93,3 +101,57 @@ GridView.builder(
                   mainAxisSpacing: 10,
                 ),
               )
+              .
+
+
+
+
+
+
+              new
+
+
+
+              
+              Column(
+                  children: [
+                    Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: primaryColor,
+                            borderRadius:
+                                BorderRadius.circular(defaultBorderRadius)),
+                        child: Column(
+                          children: [
+                            
+                            Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: secondaryColorlight,
+                                  borderRadius: BorderRadius.circular(
+                                      defaultBorderRadius)),
+                              child: Image.asset(
+                                loadedProducts[i].imageUrl,
+                                height: 132,
+                              ),
+                            ),
+
+                            const SizedBox(
+                              height: defaultPadding / 2,
+                            ),
+
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                  loadedProducts[i].title,
+                                  style: TextStyle(color: Colors.black),
+                                )),
+                                Text('\$' + loadedProducts[i].price.toString()),
+                              ],
+                            ),
+
+                          ],
+                        )),
+                  ],
+                )
